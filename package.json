@@ -1,0 +1,26 @@
+{
+  "name": "hotel-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmarinov8/hotel-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmarinov8/hotel-app/issues"
+  },
+  "homepage": "https://github.com/dmarinov8/hotel-app#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "mongoose": "^5.7.7",
+    "nodemon": "^1.19.4"
+  }
+}
