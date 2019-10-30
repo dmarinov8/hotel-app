@@ -1,0 +1,4 @@
+{
+    "jwtPrivateKey": "hotel_jwtPrivateKey",
+    "db": "mongodb://localhost/hotel"
+}
