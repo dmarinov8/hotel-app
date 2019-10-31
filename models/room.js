@@ -1,6 +1,6 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
-const {roomTypeSchema} = require('./roomType')
+// const {RoomType, roomTypeSchema} = require('./roomType')
 
 
 const roomSchema = new mongoose.Schema({
@@ -20,20 +20,9 @@ const roomSchema = new mongoose.Schema({
         maxlength: 255
     },
     roomType: {
-        type: roomTypeSchema,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'RoomType',
         required: true
-    },
-    numberInStock: {
-        type: Number,
-        min: 0,
-        max: 100,
-        default: 1
-    },
-    dailyRentalRate: {
-        type: Number,
-        min: 0,
-        max: 100,
-        default: 0
     }
 });
 
@@ -44,9 +33,7 @@ function validateRoom(room) {
     const schema = {
         roomCode: Joi.string().min(1).max(10).required(),
         roomName: Joi.string().min(5).max(255).required(),
-        roomTypeName: Joi.string().min(5).max(50).required(),
-        numberInStock: Joi.number().min(0).max(100),
-        dailyRentalRate: Joi.number().min(0).max(100)
+        roomType: Joi.string().min(5).max(50).required()
     };
 
     return Joi.validate(room, schema);

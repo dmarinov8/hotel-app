@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "set NODE_ENV=test&& jest --env=node --runInBand --verbose --coverage --forceExit",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -21,11 +22,16 @@
     "config": "^3.2.4",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "express-json": "^1.0.0",
     "joi": "^14.3.1",
     "joi-objectid": "^3.0.1",
     "mongoose": "^5.7.7",
     "nodemon": "^1.19.4",
     "pug": "^2.0.4",
     "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "supertest": "^4.0.2"
   }
 }

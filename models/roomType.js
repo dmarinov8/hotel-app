@@ -6,17 +6,36 @@ const roomTypeSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        unique: true,
         minlength: 5,
         maxlength: 50
+    },
+    numberOfUnits: {
+        type: Number,
+        min: 0,
+        default: 0
+    },
+    dailyRentalRate: {
+        type: Number,
+        min: 0,
+        default: 0
     }
 });
 
-const roomType = mongoose.model('roomType', roomTypeSchema);
+
+// Adding an instance method -- to be available on an instance of Rental
+roomTypeSchema.methods.increment = function(number) {
+    this.numberOfUnits = Math.max(0, this.numberOfUnits + number);
+};
+
+const RoomType = mongoose.model('RoomType', roomTypeSchema);
 
 
 function validateRoomType(roomType) {
     const schema = {
-        name: Joi.string().min(5).max(50).required()
+        name: Joi.string().min(5).max(50).required(),
+        numberOfUnits: Joi.number().min(0),
+        dailyRentalRate: Joi.number().min(0)
     };
 
     return Joi.validate(roomType, schema);

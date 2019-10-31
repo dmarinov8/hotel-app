@@ -3,7 +3,7 @@ const app = express();
 const logger = require('./middleware/logger');
 
 require('./startup/logging')(); 
-require('./startup/routes')(app);
+require('./startup/routes')(app); 
 require('./startup/db')();
 // require('./startup/config')();
 require('./startup/validation')();

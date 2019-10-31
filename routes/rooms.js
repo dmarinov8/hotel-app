@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', validate(validateRoom), async (req, res) => {
     // Validate the input
-    const roomType = await RoomType.findOne({name: req.body.roomTypeName});
+    const roomType = await RoomType.findOne({name: req.body.roomType});
     if(!roomType) return res.status(400).send('Invalid room type.')
 
     let room = await Room.findOne({ roomCode: req.body.roomCode });
@@ -21,13 +21,19 @@ router.post('/', validate(validateRoom), async (req, res) => {
     room = new Room({ 
         roomCode: req.body.roomCode,
         roomName: req.body.roomName,
-        roomType: {name: roomType.name},
-        numberInStock: req.body.numberInStock,
-        dailyRentalRate: req.body.dailyRentalRate
+        roomType: roomType._id
     });
-
     room = await room.save();
+
+    roomType.increment(1);
+    await roomType.save();
     
-    res.send(room);
+    const roomInDb = await Room
+        .findById(room._id)
+        .populate('roomType', 'name numberOfUnits -_id')
+        .select('roomCode roomName roomType');
+
+    res.send(roomInDb);
 });
 
+module.exports = router;

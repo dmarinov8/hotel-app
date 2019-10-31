@@ -10,12 +10,16 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', validate(validateRoomType), async (req, res) => {
+    let roomType = await RoomType.findOne({ name: req.body.name });
+    if(roomType) return res.status(400).send('This room type already exists.');
 
-    let roomType = new RoomType({ 
-        name: req.body.name
+    roomType = new RoomType({ 
+        name: req.body.name,
+        dailyRentalRate: req.body.dailyRentalRate
     });
     roomType = await roomType.save();
     
     res.send(roomType);
 });
 
+module.exports = router;

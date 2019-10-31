@@ -22,3 +22,4 @@ router.post('/', validate(validateGuest), async (req, res) => {
     res.send(guest);
 });
 
+module.exports = router;
