@@ -18,9 +18,14 @@
   },
   "homepage": "https://github.com/dmarinov8/hotel-app#readme",
   "dependencies": {
+    "config": "^3.2.4",
     "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
     "joi": "^14.3.1",
+    "joi-objectid": "^3.0.1",
     "mongoose": "^5.7.7",
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.4",
+    "pug": "^2.0.4",
+    "winston": "^3.2.1"
   }
 }

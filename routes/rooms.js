@@ -1,5 +1,6 @@
 const validate = require('../middleware/validate');
 const { Room, validateRoom } = require('../models/room');
+const { RoomType } = require('../models/roomType');
 const express = require('express');
 const router = express.Router();
 
