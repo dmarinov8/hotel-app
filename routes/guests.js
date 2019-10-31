@@ -9,17 +9,4 @@ router.get('/', async (req, res) => {
 });
 
 
-router.post('/', validate(validateGuest), async (req, res) => {
-
-    let guest = new Guest({ 
-        name: req.body.name,
-        email: req.body.email,
-        phone: req.body.phone,
-        country: req.body.country
-    });
-    guest = await guest.save();
-    
-    res.send(guest);
-});
-
 module.exports = router;

@@ -1,18 +1,18 @@
 const validate = require('../middleware/validate');
 const { Room, validateRoom } = require('../models/room');
-const { RoomType } = require('../models/roomType');
+const { RoomType } = require('../models/roomtype');
 const express = require('express');
 const router = express.Router();
 
 
 router.get('/', async (req, res) => {
-    res.send(await Room.find().sort('name'));
+    res.send(await Room.find().populate('roomType','name -_id').sort('roomCode'));
 });
 
 
 router.post('/', validate(validateRoom), async (req, res) => {
     // Validate the input
-    const roomType = await RoomType.findOne({name: req.body.roomType});
+    const roomType = await RoomType.findOne({name: req.body.roomTypeName});
     if(!roomType) return res.status(400).send('Invalid room type.')
 
     let room = await Room.findOne({ roomCode: req.body.roomCode });
