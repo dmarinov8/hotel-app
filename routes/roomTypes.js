@@ -1,11 +1,11 @@
 const validate = require('../middleware/validate');
-const { RoomType, validateRoomType } = require('../models/roomType');
+const { RoomType, validateRoomType } = require('../models/roomtype');
 const express = require('express');
 const router = express.Router();
 
 
 router.get('/', async (req, res) => {
-    res.send(await RoomType.find().sort('name'));
+    res.send(await RoomType.find().sort('name')); 
 });
 
 

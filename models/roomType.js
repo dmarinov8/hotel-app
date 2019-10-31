@@ -40,7 +40,7 @@ function validateRoomType(roomType) {
 
     return Joi.validate(roomType, schema);
 
-}
+};
 
 
 exports.RoomType = RoomType;

@@ -1,7 +1,7 @@
 const express = require('express');
 // const home = require('../routes/home');
 const guests = require('../routes/guests');
-const roomTypes = require('../routes/roomTypes');
+const roomTypes = require('../routes/roomtypes');
 const rooms = require('../routes/rooms');
 // const users = require('../routes/users');
 // const auth = require('../routes/auth');
@@ -13,7 +13,7 @@ module.exports = function (app) {
 
     app.use(express.json());
     app.use('/api/guests', guests);
-    app.use('/api/roomTypes', roomTypes);
+    app.use('/api/roomtypes', roomTypes);
     app.use('/api/rooms', rooms);
     // app.use('/api/users', users);
     // app.use('/api/auth', auth);
