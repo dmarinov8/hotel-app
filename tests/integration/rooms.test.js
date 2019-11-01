@@ -3,16 +3,18 @@ const mongoose = require('mongoose');
 const { Room } = require('../../models/room');
 const { RoomType } = require('../../models/roomtype');
 
-let server;
 
 describe('/api/rooms', () => {
-    beforeEach(() => { server = require('../../index'); }); // Open server before each test
-    afterEach(async () => { 
-        await Room.deleteMany({});
-        await server.close(); 
-    });   
-
     describe('GET /', () => {
+        
+        let server;
+
+        beforeEach(() => { server = require('../../index'); }); // Open server before each test
+        afterEach(async () => { 
+            await Room.deleteMany({});
+            await server.close(); 
+        });   
+
         it('should return all rooms', async () => {
             await Room.collection.insertMany([
                 { roomCode: 'code1', roomName: 'room1' },
@@ -42,7 +44,7 @@ describe('/api/rooms', () => {
             return request(server)
                 .post('/api/rooms')
                 // .set('x-auth-token', token)
-                .send({ roomCode, roomName, roomTypeName });
+                .send({ roomCode, roomName, roomTypeId });
         };
     
         beforeEach(async () => { 
@@ -100,8 +102,8 @@ describe('/api/rooms', () => {
             expect(res.status).toBe(400);
         });
 
-        it('should return 400 if no valid roomTypeName is provided', async () => {
-            roomTypeName = '1';
+        it('should return 400 if no valid roomTypeId is provided', async () => {
+            roomTypeId = '1';
             const res = await exec();
 
             expect(res.status).toBe(400);

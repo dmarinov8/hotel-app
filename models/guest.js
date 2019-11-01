@@ -33,7 +33,7 @@ const Guest = mongoose.model('Guest', guestSchema);
 function validateGuest(guest) {
     const schema = {
         name: Joi.string().min(5).max(50).required(),
-        email: Joi.email().min(5).max(50).required(),
+        email: Joi.string().email().min(5).max(50).required(),
         phone: Joi.string().min(5).max(50),
         country: Joi.string().min(5).max(50)
     };

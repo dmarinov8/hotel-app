@@ -32,7 +32,7 @@ function validateRoom(room) {
     const schema = {
         roomCode: Joi.string().min(1).max(10).required(),
         roomName: Joi.string().min(5).max(50).required(),
-        roomTypeName: Joi.string().min(5).max(50).required()
+        roomTypeId: Joi.objectId().required()
     };
 
     return Joi.validate(room, schema);

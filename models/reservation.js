@@ -37,10 +37,10 @@ const Reservation = mongoose.model('Reservation', reservationSchema);
 function validateReservation(reservation) {
     const schema = {
         guestName: Joi.string().min(5).max(50).required(),
-        guestEmail: Joi.string().min(5).max(50).required(),
+        guestEmail: Joi.string().email().min(5).max(50).required(),
         guestPhone: Joi.string().min(5).max(50),
         guestCountry: Joi.string().min(5).max(50),
-        roomId: Joi.ObjectId().required(),
+        roomId: Joi.objectId().required(),
         checkInDate: Joi.date().required(),
         checkOutDate: Joi.date().required(),
         numberAdults: Joi.number().min(1).required(),

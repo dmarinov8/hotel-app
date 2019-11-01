@@ -20,15 +20,6 @@ router.post('/', validate(validateReservation), async (req, res) => {
     const room = await Room.findById(req.body.roomId);
     if(!room) return res.status(400).send('Invalid room.')
 
-    // Validate guest info
-    const { error } = validateGuest({
-        name: req.body.guestName,
-        email: req.body.guestEmail,
-        phone: req.body.guestPhone,
-        country: req.body.guestCountry        
-    }); // { error } === result.error
-    if(error) return res.status(400).send(error.details[0].message);
-
     // Validate Check In/Out dates
     if(req.body.checkOutDate <= req.body.checkInDate) return res.status(400).send('Check out needs to be later than check in.')
 

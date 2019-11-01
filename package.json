@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "set NODE_ENV=test&& jest --env=node --runInBand --watchAll --verbose --forceExit",
+    "test": "set NODE_ENV=test&& jest ./tests/integration/reservations.test.js --env=node --runInBand --verbose --forceExit",
     "start": "node index.js"
   },
   "repository": {
