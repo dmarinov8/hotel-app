@@ -26,7 +26,7 @@
     "joi": "^14.3.1",
     "joi-objectid": "^3.0.1",
     "moment": "^2.24.0",
-    "mongoose": "^5.7.7",
+    "mongoose": "^5.8.5",
     "nodemon": "^1.19.4",
     "pug": "^2.0.4",
     "winston": "^3.2.1"
