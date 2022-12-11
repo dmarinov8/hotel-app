@@ -20,7 +20,7 @@
   "homepage": "https://github.com/dmarinov8/hotel-app#readme",
   "dependencies": {
     "config": "^3.2.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-async-errors": "^3.1.1",
     "express-json": "^1.0.0",
     "joi": "^14.3.1",
